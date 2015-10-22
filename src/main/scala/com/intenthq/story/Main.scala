@@ -2,9 +2,9 @@ package com.intenthq.story
 
 import java.net.URL
 
-import scala.collection.convert.Wrappers.JMapWrapper
+import scala.collection.GenMap
 
-case class Context(wordToTopic: Map[String, Int])
+case class Context(wordToTopic: GenMap[String, Int])
 
 case class Config(command: Option[Command] = None, url: Option[URL] = None)
 
@@ -29,7 +29,7 @@ case object ExtractTopics extends Command {
   implicit val context = {
     val map = MapDB.create(true).getHashMap[String, Int]("default")
 
-    Context(JMapWrapper(map).toMap)
+    Context(???)
   }
 
 }
