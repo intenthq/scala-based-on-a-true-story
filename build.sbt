@@ -1,5 +1,9 @@
 scalaVersion := "2.11.7"
 
+enablePlugins(JavaAppPackaging)
+enablePlugins(DockerPlugin)
+enablePlugins(GitVersioning)
+
 net.virtualvoid.sbt.graph.Plugin.graphSettings
 
 libraryDependencies ++= Seq(
@@ -9,3 +13,8 @@ libraryDependencies ++= Seq(
   "com.intenthq" %% "gander" % "1.2",
   "org.mapdb" % "mapdb" % "1.0.8"
 )
+
+import com.typesafe.sbt.packager.docker._
+dockerBaseImage := "java:latest"
+
+dockerCommands += ExecCmd("RUN", "bin/scala-based-on-a-true-story", "sample-db")

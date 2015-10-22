@@ -15,7 +15,7 @@ sealed trait Command {
 case object ExtractTopics extends Command {
   def run(config: Config): Int =
     config.url.flatMap { url =>
-      println("Going to extract")
+      println(s"Going to extract. Program version ${getClass.getPackage.getImplementationVersion}")
       TopicExtractor.extract(url, TextSplitter.split).map { result =>
         println(s"Extracted topics from $url")
         println("Text is ---------------------------------------------------------------------------------")
