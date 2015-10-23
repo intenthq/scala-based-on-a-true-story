@@ -16,5 +16,3 @@ libraryDependencies ++= Seq(
 
 import com.typesafe.sbt.packager.docker._
 dockerBaseImage := "java:latest"
-
-dockerCommands += ExecCmd("RUN", "bin/scala-based-on-a-true-story", "sample-db")
